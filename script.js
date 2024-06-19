@@ -1,36 +1,113 @@
-// script.js
-function calculate() {
-    const number1 = parseFloat(document.getElementById('number1').value);
-    const number2 = parseFloat(document.getElementById('number2').value);
-    const operation = document.getElementById('operation').value;
-    let result = 0;
+document.addEventListener('DOMContentLoaded', () => {
+  const calculatorScreen = document.querySelector('#calculator-screen');
+  const calculatorKeys = document.querySelector('.calculator-keys');
+  let currentInput = '';
+  let operator = '';
+  let previousInput = '';
+  
+  calculatorKeys.addEventListener('click', (event) => {
+      const { target } = event;
+      const { value } = target;
 
-    if (isNaN(number1) || isNaN(number2)) {
-        alert('Please enter valid numbers');
-        return;
-    }
+      if (!target.matches('button')) {
+          return;
+      }
 
-    switch (operation) {
-        case 'add':
-            result = number1 + number2;
-            break;
-        case 'subtract':
-            result = number1 - number2;
-            break;
-        case 'multiply':
-            result = number1 * number2;
-            break;
-        case 'divide':
-            if (number2 === 0) {
-                alert('Cannot divide by zero');
-                return;
-            }
-            result = number1 / number2;
-            break;
-        default:
-            alert('Invalid operation');
-            return;
-    }
+      switch (value) {
+          case '+':
+          case '-':
+          case '*':
+          case '/':
+          case '^':
+          case 'sqrt':
+          case 'sin':
+          case 'cos':
+          case 'tan':
+              handleOperator(value);
+              break;
+          case '=':
+              handleEqualSign();
+              break;
+          case 'all-clear':
+              handleAllClear();
+              break;
+          default:
+              handleNumber(value);
+      }
 
-    document.getElementById('result').textContent = result;
-}
+      updateScreen();
+  });
+
+  const handleNumber = (num) => {
+      if (currentInput === '' && operator === '') {
+          currentInput = num;
+      } else {
+          currentInput += num;
+      }
+  };
+
+  const handleOperator = (op) => {
+      if (operator === '') {
+          operator = op;
+          previousInput = currentInput;
+          currentInput = '';
+      } else {
+          handleEqualSign();
+          operator = op;
+      }
+  };
+
+  const handleEqualSign = () => {
+      if (operator === '') return;
+
+      let result;
+      const prev = parseFloat(previousInput);
+      const current = parseFloat(currentInput);
+
+      switch (operator) {
+          case '+':
+              result = prev + current;
+              break;
+          case '-':
+              result = prev - current;
+              break;
+          case '*':
+              result = prev * current;
+              break;
+          case '/':
+              result = prev / current;
+              break;
+          case '^':
+              result = Math.pow(prev, current);
+              break;
+          case 'sqrt':
+              result = Math.sqrt(current);
+              break;
+          case 'sin':
+              result = Math.sin((current * Math.PI) / 180);
+              break;
+          case 'cos':
+              result = Math.cos((current * Math.PI) / 180);
+              break;
+          case 'tan':
+              result = Math.tan((current * Math.PI) / 180);
+              break;
+          default:
+              return;
+      }
+
+      currentInput = result.toString();
+      operator = '';
+      previousInput = '';
+  };
+
+  const handleAllClear = () => {
+      currentInput = '';
+      operator = '';
+      previousInput = '';
+  };
+
+  const updateScreen = () => {
+      calculatorScreen.value = currentInput;
+  };
+});
