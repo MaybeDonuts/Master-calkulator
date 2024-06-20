@@ -91,3 +91,8 @@ button[value="%"], button[value="^"], button[value="sqrt"], button[value="sin"],
     background-color: #32cd32;
     color: white;
 }
+
+button.exit {
+    background-color: #ff9500;
+    color: white;
+}
