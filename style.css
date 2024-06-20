@@ -96,3 +96,34 @@ button.exit {
     background-color: #ff9500;
     color: white;
 }
+button[value="+"] { grid-column: 1; grid-row: 1; }
+button[value="-"] { grid-column: 2; grid-row: 1; }
+button[value="*"] { grid-column: 3; grid-row: 1; }
+button[value="/"] { grid-column: 4; grid-row: 1; }
+
+button[value="^"] { grid-column: 1; grid-row: 2; }
+button[value="sqrt"] { grid-column: 2; grid-row: 2; }
+button[value="sin"] { grid-column: 3; grid-row: 2; }
+button[value="cos"] { grid-column: 4; grid-row: 2; }
+
+button[value="7"] { grid-column: 1; grid-row: 3; }
+button[value="8"] { grid-column: 2; grid-row: 3; }
+button[value="9"] { grid-column: 3; grid-row: 3; }
+button[value="%"] { grid-column: 4; grid-row: 3; }
+
+button[value="4"] { grid-column: 1; grid-row: 4; }
+button[value="5"] { grid-column: 2; grid-row: 4; }
+button[value="6"] { grid-column: 3; grid-row: 4; }
+button[value="tan"] { grid-column: 4; grid-row: 4; }
+
+button[value="1"] { grid-column: 1; grid-row: 5; }
+button[value="2"] { grid-column: 2; grid-row: 5; }
+button[value="3"] { grid-column: 3; grid-row: 5; }
+button.exit { grid-column: 4; grid-row: 5; }
+
+button[value="."] { grid-column: 1; grid-row: 6; }
+button.all-clear { grid-column: 2; grid-row: 6; }
+button[value="0"] { grid-column: 3; grid-row: 6; }
+button.delete { grid-column: 4; grid-row: 6; }
+
+button.equal-sign { grid-column: 1 / span 4; grid-row: 7; }
