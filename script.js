@@ -14,6 +14,11 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
+        if (value === 'exit') {
+            window.close();
+            return;
+        }
+
         switch (value) {
             case '+':
             case '-':
