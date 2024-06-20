@@ -4,6 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let currentInput = '';
     let operator = '';
     let previousInput = '';
+    let resultDisplayed = false;
 
     calculatorKeys.addEventListener('click', (event) => {
         const { target } = event;
@@ -23,6 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
             case 'sin':
             case 'cos':
             case 'tan':
+            case '%':
                 handleOperator(value);
                 break;
             case '=':
@@ -30,6 +32,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 break;
             case 'all-clear':
                 handleAllClear();
+                break;
+            case 'del':
+                handleDelete();
                 break;
             default:
                 handleNumber(value);
@@ -39,22 +44,24 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     const handleNumber = (num) => {
-        if (currentInput === '' && operator === '') {
+        if (resultDisplayed) {
             currentInput = num;
+            resultDisplayed = false;
         } else {
             currentInput += num;
         }
     };
 
     const handleOperator = (op) => {
-        if (operator === '') {
-            operator = op;
-            previousInput = currentInput;
-            currentInput = '';
-        } else {
-            handleEqualSign();
-            operator = op;
+        if (currentInput === '' && op !== 'sqrt' && op !== 'sin' && op !== 'cos' && op !== 'tan') {
+            return;
         }
+        if (operator !== '' && !resultDisplayed) {
+            handleEqualSign();
+        }
+        operator = op;
+        previousInput = currentInput;
+        currentInput = '';
     };
 
     const handleEqualSign = () => {
@@ -81,16 +88,19 @@ document.addEventListener('DOMContentLoaded', () => {
                 result = Math.pow(prev, current);
                 break;
             case 'sqrt':
-                result = Math.sqrt(current);
+                result = Math.sqrt(prev || current);
                 break;
             case 'sin':
-                result = Math.sin((current * Math.PI) / 180);
+                result = Math.sin((prev || current) * Math.PI / 180);
                 break;
             case 'cos':
-                result = Math.cos((current * Math.PI) / 180);
+                result = Math.cos((prev || current) * Math.PI / 180);
                 break;
             case 'tan':
-                result = Math.tan((current * Math.PI) / 180);
+                result = Math.tan((prev || current) * Math.PI / 180);
+                break;
+            case '%':
+                result = prev * current / 100;
                 break;
             default:
                 return;
@@ -99,6 +109,7 @@ document.addEventListener('DOMContentLoaded', () => {
         currentInput = result.toString();
         operator = '';
         previousInput = '';
+        resultDisplayed = true;
     };
 
     const handleAllClear = () => {
@@ -107,11 +118,11 @@ document.addEventListener('DOMContentLoaded', () => {
         previousInput = '';
     };
 
-    const updateScreen = () => {
-        calculatorScreen.value = currentInput;
+    const handleDelete = () => {
+        currentInput = currentInput.slice(0, -1);
     };
-});
 
-document.getElementById('exit').addEventListener('click', function() {
-    window.close();
+    const updateScreen = () => {
+        calculatorScreen.value = previousInput + ' ' + operator + ' ' + currentInput;
+    };
 });
