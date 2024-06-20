@@ -111,3 +111,8 @@ document.addEventListener('DOMContentLoaded', () => {
       calculatorScreen.value = currentInput;
   };
 });
+
+
+document.getElementById('exit').addEventListener('click', function() {
+    window.close();
+});
