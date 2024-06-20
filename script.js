@@ -125,6 +125,4 @@ document.addEventListener('DOMContentLoaded', () => {
     const updateScreen = () => {
         calculatorScreen.value = previousInput + ' ' + operator + ' ' + currentInput;
     };
-    document.getElementById('exit').addEventListener('click', function() {
-    window.close();
 });
