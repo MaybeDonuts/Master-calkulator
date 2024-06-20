@@ -3,39 +3,48 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CAL</title>
+    <title>Multifunctional Calculator</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="calculator">
-        <input type="text" class="calculator-screen" id="calculator-screen" disabled />
-        <div class="calculator-keys">
-            <button class="operator" value="+">+</button>
-            <button class="operator" value="-">-</button>
-            <button class="operator" value="*">&times;</button>
-            <button class="operator" value="/">&divide;</button>
-            <button class="operator" value="^">^</button>
-            <button class="operator" value="sqrt">√</button>
-            <button class="operator" value="sin">sin</button>
-            <button class="operator" value="cos">cos</button>
-            <button class="operator" value="tan">tan</button>
+    <div class="container">
+        <header>
+            <h1>Multifunctional Calculator</h1>
+        </header>
+        <div class="calculator">
+            <input type="text" class="calculator-screen" id="calculator-screen" disabled />
+            <div class="calculator-keys">
+                <button class="operator" value="+">+</button>
+                <button class="operator" value="-">-</button>
+                <button class="operator" value="*">&times;</button>
+                <button class="operator" value="/">&divide;</button>
+                <button class="operator" value="^">^</button>
+                <button class="operator" value="sqrt">√</button>
+                <button class="operator" value="sin">sin</button>
+                <button class="operator" value="cos">cos</button>
+                <button class="operator" value="tan">tan</button>
+                <button class="operator" value="%">%</button>
 
-            <button value="7">7</button>
-            <button value="8">8</button>
-            <button value="9">9</button>
-            <button value="4">4</button>
-            <button value="5">5</button>
-            <button value="6">6</button>
-            <button value="1">1</button>
-            <button value="2">2</button>
-            <button value="3">3</button>
-            <button value="0">0</button>
-            <button value=".">.</button>
-            <button class="all-clear" value="all-clear">AC</button>
-            <button class="exit" id="exit">Exit</button>
-            <button class="equal-sign" value="=">=</button>
+                <button value="7">7</button>
+                <button value="8">8</button>
+                <button value="9">9</button>
+                <button value="4">4</button>
+                <button value="5">5</button>
+                <button value="6">6</button>
+                <button value="1">1</button>
+                <button value="2">2</button>
+                <button value="3">3</button>
+                <button value="0">0</button>
+                <button value=".">.</button>
+                <button class="all-clear" value="all-clear">AC</button>
+                <button class="equal-sign" value="=">=</button>
+                <button class="delete" value="del">DEL</button>
+            </div>
         </div>
+        <footer>
+            <p>Maks,Roma,Tima,Anton &copy; 2024</p>
+        </footer>
     </div>
-    <script src="script.js"></script>
+    <script src="Calc.js"></script>
 </body>
 </html>
