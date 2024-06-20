@@ -1,93 +1,93 @@
 body {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  background-color: #f4f4f4;
-  font-family: 'Arial', sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f4f4f4;
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+}
+
+.container {
+    text-align: center;
+}
+
+header {
+    margin-bottom: 20px;
+}
+
+header h1 {
+    font-size: 2em;
+    color: #333;
+}
+
+footer {
+    margin-top: 20px;
+    font-size: 1em;
+    color: #333;
 }
 
 .calculator {
-  border: 1px solid #000;
-  border-radius: 5px;
-  padding: 20px;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
-  background-color: #fff;
-  width: 320px;
+    border: 2px solid #000;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    background-color: #fff;
+    width: 400px;
 }
 
 .calculator-screen {
-  width: 100%;
-  height: 50px;
-  border: none;
-  background-color: #f3f3f3;
-  font-size: 1.5em;
-  text-align: right;
-  margin-bottom: 10px;
-  padding-right: 10px;
-  box-sizing: border-box;
+    width: 100%;
+    height: 60px;
+    border: none;
+    background-color: #f3f3f3;
+    font-size: 2em;
+    text-align: right;
+    margin-bottom: 20px;
+    padding-right: 10px;
+    box-sizing: border-box;
 }
 
 .calculator-keys {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 5px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
 }
 
 button {
-  height: 50px;
-  font-size: 1.2em;
-  border: none;
-  background-color: #f1f1f1;
-  border-radius: 5px;
-  cursor: pointer;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+    height: 60px;
+    font-size: 1.5em;
+    border: none;
+    background-color: #f1f1f1;
+    border-radius: 10px;
+    cursor: pointer;
+    box-shadow: 0 5px #ccc;
+}
+
+button:active {
+    box-shadow: 0 2px #aaa;
+    transform: translateY(2px);
 }
 
 button.operator {
-  background-color: #ff9500;
-  color: white;
+    background-color: #ff9500;
+    color: white;
 }
 
 button.equal-sign {
-  background-color: #007aff;
-  color: white;
-  grid-column: span 4;
+    background-color: #007aff;
+    color: white;
+    grid-column: span 2;
 }
 
-button.all-clear {
-  background-color: #ff3b30;
-  color: white;
+button.all-clear, button.delete {
+    background-color: #ff3b30;
+    color: white;
+    grid-column: span 2;
 }
 
-/* Specific positions for each button to match the example */
-button[value="7"] { grid-column: 1; grid-row: 3; }
-button[value="8"] { grid-column: 2; grid-row: 3; }
-button[value="9"] { grid-column: 3; grid-row: 3; }
-button[value="+"] { grid-column: 4; grid-row: 3; }
-
-button[value="4"] { grid-column: 1; grid-row: 4; }
-button[value="5"] { grid-column: 2; grid-row: 4; }
-button[value="6"] { grid-column: 3; grid-row: 4; }
-button[value="-"] { grid-column: 4; grid-row: 4; }
-
-button[value="1"] { grid-column: 1; grid-row: 5; }
-button[value="2"] { grid-column: 2; grid-row: 5; }
-button[value="3"] { grid-column: 3; grid-row: 5; }
-button[value="*"] { grid-column: 4; grid-row: 5; }
-
-button[value="0"] { grid-column: 1 / span 2; grid-row: 6; }
-button[value="."] { grid-column: 3; grid-row: 6; }
-button[value="/"] { grid-column: 4; grid-row: 6; }
-
-button.all-clear { grid-column: 1 / span 2; grid-row: 1; }
-button.equal-sign { grid-column: 1 / span 4; grid-row: 7; }
-
-button[value="^"] { grid-column: 1; grid-row: 2; }
-button[value="sqrt"] { grid-column: 2; grid-row: 2; }
-button[value="sin"] { grid-column: 3; grid-row: 2; }
-button[value="cos"] { grid-column: 4; grid-row: 2; }
-
-button[value="tan"] { grid-column: 1; grid-row: 1; }
+button[value="%"], button[value="^"], button[value="sqrt"], button[value="sin"], button[value="cos"], button[value="tan"] {
+    background-color: #32cd32;
+    color: white;
+}
